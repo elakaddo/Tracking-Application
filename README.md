@@ -1,5 +1,6 @@
 # 📦 Shipment Tracking System
 <p align="center">
+  <img src="https://img.shields.io/github/actions/workflow/status/elakaddo/Tracking-Application/ci.yml?branch=main&style=for-the-badge&logo=github-actions&logoColor=white" alt="Build Status">
   <img src="https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white" alt="Spring Boot">
   <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white" alt="Angular">
   <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL">
@@ -82,4 +83,3 @@ Vous disposez de deux méthodes pour faire fonctionner le projet selon vos besoi
 Le projet utilise Hibernate en mode `ddl-auto=update`. Par conséquent, les tables (notamment la table `shipment`) sont générées automatiquement lors du premier démarrage réussi de l'application.
 
 ---
-✨ *Développé avec rigueur par Elakaddo.* ✨
