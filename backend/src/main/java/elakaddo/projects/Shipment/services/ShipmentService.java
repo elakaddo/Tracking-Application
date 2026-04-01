@@ -1,13 +1,13 @@
 package elakaddo.projects.Shipment.services;
 
-import elakaddo.projects.Shipment.DTO.ShipmentDTO;
+import elakaddo.projects.Shipment.DTO.CreateShipmentRequestDTO;
+import elakaddo.projects.Shipment.DTO.ShipmentResponseDTO;
 import elakaddo.projects.Shipment.models.Shipment;
 import elakaddo.projects.Shipment.repositories.ShipmentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -17,7 +17,7 @@ public class ShipmentService {
 
     private final ShipmentRepository shipmentRepository;
 
-    public ShipmentDTO.ShipmentResponse createShipment(ShipmentDTO.CreateShipmentRequest request) {
+    public ShipmentResponseDTO createShipment(CreateShipmentRequestDTO request) {
         Shipment shipment = Shipment.builder()
                 .trackingNumber(generatedTrackingNumber())
                 .origin(request.origin)
@@ -25,21 +25,21 @@ public class ShipmentService {
                 .estimatedDelivery(request.estimatedDelivery)
                 .build();
         shipmentRepository.save(shipment);
-        return mapToShipmentResponse(shipment);
+        return mapToShipmentResponseDTO(shipment);
     }
 
-    public List<ShipmentDTO.ShipmentResponse> getAllShipments() {
+    public List<ShipmentResponseDTO> getAllShipments() {
         List<Shipment> shipments = shipmentRepository.findAll();
-        return shipments.stream().map(this::mapToShipmentResponse).collect(Collectors.toList());
+        return shipments.stream().map(this::mapToShipmentResponseDTO).collect(Collectors.toList());
     }
 
-    public ShipmentDTO.ShipmentResponse getShipment(Long id) {
+    public ShipmentResponseDTO getShipment(Long id) {
         Shipment shipment = shipmentRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Shipment with id " + id + " not found"));
-        return mapToShipmentResponse(shipment);
+        return mapToShipmentResponseDTO(shipment);
     }
 
-    public ShipmentDTO.ShipmentResponse getShipmentBytrackingNumber(String trackingNumber) {
+    public ShipmentResponseDTO getShipmentBytrackingNumber(String trackingNumber) {
         //Shipment shipment = shipmentRepository.findAll(String.valueOf(trackingNumber));
         return null;
     }
@@ -48,8 +48,8 @@ public class ShipmentService {
         return "TRK-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase();
     }
 
-    private ShipmentDTO.ShipmentResponse mapToShipmentResponse(Shipment shipment) {
-        return ShipmentDTO.ShipmentResponse.builder()
+    private ShipmentResponseDTO mapToShipmentResponseDTO(Shipment shipment) {
+        return ShipmentResponseDTO.builder()
                 .id(shipment.getId())
                 .trackingNumber(shipment.getTrackingNumber())
                 .origin(shipment.getOrigin())
