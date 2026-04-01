@@ -1,0 +1,32 @@
+name: Java CI with Maven and Docker
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Compile and Package (JAR)
+        # On saute les tests pour l'instant comme vous l'avez demandé
+        # On précise le chemin vers le pom.xml s'il est dans le dossier /backend
+        run: mvn -f backend/pom.xml clean package -DskipTests
+
+      - name: Build Docker Image
+        # On vérifie que l'image Docker se construit bien
+        run: |
+          docker build -t shipment-api:latest ./backend
