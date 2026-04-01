@@ -1,5 +1,6 @@
 # 📦 Shipment Tracking System
 <p align="center">
+  <img src="https://img.shields.io/github/actions/workflow/status/elakaddo/Tracking-Application/ci.yml?branch=main&style=for-the-badge&logo=github-actions&logoColor=white" alt="Build Status">
   <img src="https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white" alt="Spring Boot">
   <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white" alt="Angular">
   <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL">
