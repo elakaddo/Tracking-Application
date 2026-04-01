@@ -1,0 +1,45 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: shipment-postgres
+    environment:
+      POSTGRES_DB: shipment_tracking
+      POSTGRES_USER: SET_USERNAME_HERE(admin)
+      POSTGRES_PASSWORD: SET_PASSWORD_HERE (admin123)
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d shipment_tracking"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - shipment-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: shipment-api
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/shipment_tracking
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: admin123
+      SPRING_PROFILES_ACTIVE : docker
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - shipment-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+networks:
+  shipment-network:
+    driver: bridge
