@@ -40,8 +40,10 @@ public class ShipmentService {
     }
 
     public ShipmentResponseDTO getShipmentBytrackingNumber(String trackingNumber) {
-        //Shipment shipment = shipmentRepository.findAll(String.valueOf(trackingNumber));
-        return null;
+        Shipment shipment = shipmentRepository.findByTrackingNumber(trackingNumber).orElseThrow(
+                () -> new RuntimeException("Shipment with trackingNumber " + trackingNumber + " not found")
+        );
+        return mapToShipmentResponseDTO(shipment);
     }
 
     private String generatedTrackingNumber() {
