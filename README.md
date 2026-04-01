@@ -14,7 +14,7 @@ Bienvenue dans l'application **Shipment Tracking** ! Ce projet est une API Sprin
 Le projet s'articule autour de trois services principaux :
 * ☕ **Backend** : Application Spring Boot (Java 21).
 * 🐘 **Database** : PostgreSQL (version Alpine pour la légèreté).
-* 🌐 **Frontend** : Interface utilisateur (actuellement en cours de développement).
+* 🌐 **Frontend** : Angular (Prochain Sprint).
 
 ---
 
