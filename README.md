@@ -1,5 +1,10 @@
 # 📦 Shipment Tracking System
-
+<p align="center">
+  <img src="https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white" alt="Spring Boot">
+  <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white" alt="Angular">
+  <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL">
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
+</p>
 Bienvenue dans l'application **Shipment Tracking** ! Ce projet est une API Spring Boot robuste connectée à une base de données PostgreSQL, le tout orchestré avec Docker pour vous garantir une installation fluide et isolée. 🚀
 
 ---
